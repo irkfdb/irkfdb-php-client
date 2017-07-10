@@ -88,7 +88,24 @@ class IrkfdbClient
             $apiCall .= 'random';
         }
 
-        return $apiCall;
+        $queryParams = array();
+        $strParams = '';
+
+        // checks if the limitFactsTo is set & adds to the queryParams
+        if (count($this->limitFactsCategories) > 0) {
+            $queryParams['limitFactsTo'] = implode(",", $this->limitFactsCategories);
+        }
+        // checks if the excludeFactsFrom is set & adds to the queryParams
+        if (count($this->excludeFactsCategories) > 0) {
+            $queryParams['excludeFactsFrom'] = implode(",", $this->excludeFactsCategories);
+        }
+
+        // check if queryParams exist if yes build the queryString of it
+        if (count($queryParams) > 0) {
+            $strParams = '?' . http_build_query($queryParams);
+        }
+
+        return $apiCall . $strParams;
     }
 
     /**
