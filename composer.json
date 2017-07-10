@@ -1,0 +1,18 @@
+{
+  "name": "irkfdb/irkfdb-php-client",
+  "description": "PHP Client for Internet Rajinikanth Facts Database - irkfdb.in",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Swapnil Sarwe",
+      "email": "swapnilsarwe@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Irkfdb\\": "src"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {}
+}
