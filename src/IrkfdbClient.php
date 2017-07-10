@@ -9,6 +9,7 @@ class IrkfdbClient
     private $firstName;
     private $lastName;
 
+    private $categories;
     private $limitFactsCategories = array();
     private $excludeFactsCategories = array();
 
@@ -75,6 +76,15 @@ class IrkfdbClient
     }
 
     /**
+     * @return array - array of categories
+     */
+    public function getCategories()
+    {
+        $this->categories = true;
+        return $this->makeApiCall();
+    }
+
+    /**
      * Forms the API url
      *
      * @return - string the url  of the api call
@@ -82,6 +92,10 @@ class IrkfdbClient
     private function makeUrl()
     {
         $apiCall = self::API_URL;
+
+        if ($this->categories === true) {
+            return $apiCall . 'categories';
+        }
 
         // checks if random is set
         if ($this->isRandom === true) {
