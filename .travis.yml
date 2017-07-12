@@ -13,3 +13,11 @@ php:
 before_script:
   - composer self-update
   - composer install --prefer-source --no-interaction --dev
+
+# Commands you want to run that will verify your build.
+script: phpunit
+
+# Customize when the notification emails are sent.
+notifications:
+    on_success: never
+    on_failure: always
