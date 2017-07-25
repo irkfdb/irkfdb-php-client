@@ -5,6 +5,8 @@ namespace Irkfdb;
 class IrkfdbClient
 {
     const API_URL = 'http://api.irkfdb.in/facts/';
+    const VERSION_NUMBER = '1.0';
+    const API_TYPE = 'PHP_CLIENT';
 
     private $firstName;
     private $lastName;
@@ -102,7 +104,10 @@ class IrkfdbClient
             $apiCall .= 'random';
         }
 
-        $queryParams = array();
+        $queryParams = array(
+            'api_type' => self::API_TYPE,
+            'version_number' => self::VERSION_NUMBER
+        );
         $strParams = '';
 
         // checks if the limitFactsTo is set & adds to the queryParams
