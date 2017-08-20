@@ -95,20 +95,22 @@ class IrkfdbClient
     {
         $apiCall = self::API_URL;
 
+        $queryParams = array(
+            'api_type' => self::API_TYPE,
+            'version_number' => self::VERSION_NUMBER
+        );
+
+        $strParams = '';
+
         if ($this->categories === true) {
-            return $apiCall . 'categories';
+            $strParams = '?' . http_build_query($queryParams);
+            return $apiCall . 'categories' . $strParams;
         }
 
         // checks if random is set
         if ($this->isRandom === true) {
             $apiCall .= 'random';
         }
-
-        $queryParams = array(
-            'api_type' => self::API_TYPE,
-            'version_number' => self::VERSION_NUMBER
-        );
-        $strParams = '';
 
         // checks if the limitFactsTo is set & adds to the queryParams
         if (count($this->limitFactsCategories) > 0) {
