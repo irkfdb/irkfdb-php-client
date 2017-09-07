@@ -16,5 +16,6 @@
   "minimum-stability": "dev",
   "require": {
     "phpunit/phpunit": "5.0.*"
-  }
+  },
+  "license": "MIT"
 }
