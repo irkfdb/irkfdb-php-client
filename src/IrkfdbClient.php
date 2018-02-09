@@ -112,6 +112,12 @@ class IrkfdbClient
             $apiCall .= 'random';
         }
 
+        // check if custom name params are provided
+        if (!is_null($this->firstName) && !is_null($this->lastName)) {
+            $queryParams['firstName'] = $this->firstName;
+            $queryParams['lastName'] = $this->lastName;
+        }
+
         // checks if the limitFactsTo is set & adds to the queryParams
         if (count($this->limitFactsCategories) > 0) {
             $queryParams['limitFactsTo'] = implode(",", $this->limitFactsCategories);
