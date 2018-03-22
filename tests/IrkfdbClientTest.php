@@ -1,13 +1,13 @@
 <?php
+namespace Irkfdb;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-require_once __DIR__ . '/../src/IrkfdbClient.php';
+use PHPUnit\Framework\TestCase;
 
-class IrkfdbClientTest extends PHPUnit_Framework_TestCase
+class IrkfdbClientTest extends TestCase
 {
     private function getApiClient()
     {
-        return new Irkfdb\IrkfdbClient();
+        return new IrkfdbClient();
     }
 
     private function parseResponse($response)
@@ -27,11 +27,13 @@ class IrkfdbClientTest extends PHPUnit_Framework_TestCase
 
     public function testApiWorking()
     {
+
         $response = $this->parseResponse($this->getApiClient()->getRandomFact());
 
         $this->assertEquals('OK', $response['status']);
         $this->assertGreaterThanOrEqual(1, count($response['data']));
         $this->assertEmpty($response['errorMessage']);
+
     }
 
     public function testProperCategoryFact()

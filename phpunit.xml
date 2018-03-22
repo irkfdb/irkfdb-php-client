@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<phpunit convertWarningsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertErrorsToExceptions="true"
-         backupStaticAttributes="false"
-         processIsolation="false"
-         stopOnFailure="false"
-         backupGlobals="false"
-         syntaxCheck="false"
-         colors="true">
+<phpunit colors="true" bootstrap="tests/autoload.php">
     <testsuites>
-        <testsuite name="IrkfdbPHPClientTestSuite">
-            <directory>./tests/</directory>
-            <file>./IrkfdbClientTest.php</file>
+        <testsuite name="converter">
+            <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
 </phpunit>
