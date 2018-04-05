@@ -12,8 +12,8 @@ class IrkfdbClient
     private $lastName;
 
     private $categories;
-    private $limitFactsCategories = array();
-    private $excludeFactsCategories = array();
+    private $limitFactsCategories = [];
+    private $excludeFactsCategories = [];
 
     private $isRandom = false;
 
@@ -35,7 +35,7 @@ class IrkfdbClient
     }
 
     /**
-     * Set categories you want the facts from
+     * Set categories you want the facts from.
      * @param1 - categories separated by commas or an array
      *
      * @return $this
@@ -43,7 +43,7 @@ class IrkfdbClient
     public function fromCategories($categories)
     {
         if (is_string($categories)) {
-            $this->limitFactsCategories = array_merge($this->limitFactsCategories, explode(",", $categories));
+            $this->limitFactsCategories = array_merge($this->limitFactsCategories, explode(',', $categories));
         }
         if (is_array($categories)) {
             $this->limitFactsCategories = array_merge($this->limitFactsCategories, $categories);
@@ -60,7 +60,7 @@ class IrkfdbClient
     public function excludeCategories($categories)
     {
         if (is_string($categories)) {
-            $this->excludeFactsCategories = array_merge($this->excludeFactsCategories, explode(",", $categories));
+            $this->excludeFactsCategories = array_merge($this->excludeFactsCategories, explode(',', $categories));
         }
         if (is_array($categories)) {
             $this->excludeFactsCategories = array_merge($this->excludeFactsCategories, $categories);
@@ -87,7 +87,7 @@ class IrkfdbClient
     }
 
     /**
-     * Forms the API url
+     * Forms the API url.
      *
      * @return - string the url  of the api call
      */
@@ -95,15 +95,16 @@ class IrkfdbClient
     {
         $apiCall = self::API_URL;
 
-        $queryParams = array(
+        $queryParams = [
             'api_type' => self::API_TYPE,
             'version_number' => self::VERSION_NUMBER
-        );
+        ];
 
         $strParams = '';
 
         if ($this->categories === true) {
             $strParams = '?' . http_build_query($queryParams);
+
             return $apiCall . 'categories' . $strParams;
         }
 
@@ -114,11 +115,11 @@ class IrkfdbClient
 
         // checks if the limitFactsTo is set & adds to the queryParams
         if (count($this->limitFactsCategories) > 0) {
-            $queryParams['limitFactsTo'] = implode(",", $this->limitFactsCategories);
+            $queryParams['limitFactsTo'] = implode(',', $this->limitFactsCategories);
         }
         // checks if the excludeFactsFrom is set & adds to the queryParams
         if (count($this->excludeFactsCategories) > 0) {
-            $queryParams['excludeFactsFrom'] = implode(",", $this->excludeFactsCategories);
+            $queryParams['excludeFactsFrom'] = implode(',', $this->excludeFactsCategories);
         }
 
         // check if queryParams exist if yes build the queryString of it
@@ -134,7 +135,7 @@ class IrkfdbClient
      */
     private function makeApiCall()
     {
-        ini_set("display_errors", 1);
+        ini_set('display_errors', 1);
         error_reporting(E_ALL);
         $ch = curl_init();
 
