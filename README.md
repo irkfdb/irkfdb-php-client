@@ -1,4 +1,4 @@
-# irkfdb.in php client [![Build Status](https://travis-ci.org/irkfdb/irkfdb-php-client.svg?branch=master)](https://travis-ci.org/irkfdb/irkfdb-php-client)
+# irkfdb.in php client [![Build Status](https://travis-ci.org/irkfdb/irkfdb-php-client.svg?branch=master)](https://travis-ci.org/irkfdb/irkfdb-php-client) [![StyleCI](https://styleci.io/repos/96688819/shield?branch=master)](https://styleci.io/repos/96688819)
 PHP API Client for the Internet Rajinikanth Facts Database. Its a wrapper class for the free database of Rajinikanth Facts hosted by irkfdb.in
 
 ## Install
