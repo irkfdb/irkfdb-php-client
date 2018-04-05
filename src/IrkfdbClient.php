@@ -31,6 +31,7 @@ class IrkfdbClient
         } else {
             // TODO: Name are empty - throw appropriate exception
         }
+
         return $this;
     }
 
@@ -157,12 +158,9 @@ class IrkfdbClient
                     'errorMessage'  => 'Api Unavailable: '.curl_error($ch).', Error Number: '.curl_errno($ch),
                 ]);
             }
-
         } catch (\Exception $e) {
-
         }
 
         return json_decode($data, true);
     }
-
 }
