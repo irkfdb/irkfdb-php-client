@@ -42,5 +42,4 @@ class IrkfdbClientTest extends TestCase
         $this->assertEquals('OK', $response['status']);
         $this->assertEquals(true, in_array('geeky', $response['data'][0]['categories']));
     }
-    
 }
