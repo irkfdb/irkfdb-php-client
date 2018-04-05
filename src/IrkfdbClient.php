@@ -4,15 +4,15 @@ namespace Irkfdb;
 
 class IrkfdbClient
 {
-    const API_URL           = 'http://api.irkfdb.in/facts/';
-    const VERSION_NUMBER    = '1.0';
-    const API_TYPE          = 'PHP_CLIENT';
+    const API_URL = 'http://api.irkfdb.in/facts/';
+    const VERSION_NUMBER = '1.0';
+    const API_TYPE = 'PHP_CLIENT';
 
     private $firstName;
     private $lastName;
 
     private $categories;
-    private $limitFactsCategories   = [];
+    private $limitFactsCategories = [];
     private $excludeFactsCategories = [];
 
     private $isRandom = false;
@@ -36,6 +36,7 @@ class IrkfdbClient
 
     /**
      * Set categories you want the facts from.
+     *
      * @param1 - categories separated by commas or an array
      *
      * @return $this
@@ -48,11 +49,13 @@ class IrkfdbClient
         if (is_array($categories)) {
             $this->limitFactsCategories = array_merge($this->limitFactsCategories, $categories);
         }
+
         return $this;
     }
 
     /**
      * Set categores you dont want the facts from.
+     *
      * @param1 - categories separated by commas or an array
      *
      * @return $this
@@ -65,6 +68,7 @@ class IrkfdbClient
         if (is_array($categories)) {
             $this->excludeFactsCategories = array_merge($this->excludeFactsCategories, $categories);
         }
+
         return $this;
     }
 
@@ -74,6 +78,7 @@ class IrkfdbClient
     public function getRandomFact()
     {
         $this->isRandom = true;
+
         return $this->makeApiCall();
     }
 
@@ -83,6 +88,7 @@ class IrkfdbClient
     public function getCategories()
     {
         $this->categories = true;
+
         return $this->makeApiCall();
     }
 
@@ -97,7 +103,7 @@ class IrkfdbClient
 
         $queryParams = [
             'api_type'       => self::API_TYPE,
-            'version_number' => self::VERSION_NUMBER
+            'version_number' => self::VERSION_NUMBER,
         ];
 
         $strParams = '';
@@ -148,13 +154,14 @@ class IrkfdbClient
                 //TODO: throw appropriate exception for curl error
                 $data = json_encode([
                     'status'        => 'FAIL',
-                    'errorMessage'  => 'Api Unavailable: ' . curl_error($ch) . ', Error Number: ' . curl_errno($ch)
+                    'errorMessage'  => 'Api Unavailable: '.curl_error($ch).', Error Number: '.curl_errno($ch),
                 ]);
             }
 
         } catch (\Exception $e) {
 
         }
+
         return json_decode($data, true);
     }
 

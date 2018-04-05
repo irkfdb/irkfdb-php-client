@@ -21,19 +21,17 @@ class IrkfdbClientTest extends TestCase
         return [
             'status'        => $status,
             'data'          => $data,
-            'errorMessage'  => $message
+            'errorMessage'  => $message,
         ];
     }
 
     public function testApiWorking()
     {
-
         $response = $this->parseResponse($this->getApiClient()->getRandomFact());
 
         $this->assertEquals('OK', $response['status']);
         $this->assertGreaterThanOrEqual(1, count($response['data']));
         $this->assertEmpty($response['errorMessage']);
-
     }
 
     public function testProperCategoryFact()
