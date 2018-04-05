@@ -18,11 +18,11 @@ class IrkfdbClientTest extends TestCase
 
         $message = (isset($response['errorMessage'])) ? $response['errorMessage'] : '';
 
-        return array(
-            'status' => $status,
-            'data' => $data,
-            'errorMessage' => $message
-        );
+        return [
+            'status'        => $status,
+            'data'          => $data,
+            'errorMessage'  => $message
+        ];
     }
 
     public function testApiWorking()
