@@ -107,6 +107,12 @@ class IrkfdbClient
             'version_number' => self::VERSION_NUMBER,
         ];
 
+        if(!empty($this->firstName) && !empty($this->lastName))
+        {
+            $queryParams['firstName'] = $this->firstName;
+            $queryParams['lastName'] = $this->lastName;
+        }
+
         $strParams = '';
 
         if ($this->categories === true) {

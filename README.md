@@ -105,3 +105,8 @@ $irkfdbClient->excludeCategories('nsfw,geeky')->getRandomFact();
 or
 $irkfdbClient->excludeCategories(['nsfw','geeky'])->getRandomFact();
 ```
+
+## Running the tests
+```
+./vendor/bin/phpunit --configuration phpunit.xml
+```
