@@ -107,18 +107,18 @@ class IrkfdbClient
             'version_number' => self::VERSION_NUMBER,
         ];
 
-        if(!empty($this->firstName) && !empty($this->lastName))
-        {
-            $queryParams['firstName'] = $this->firstName;
-            $queryParams['lastName'] = $this->lastName;
-        }
-
         $strParams = '';
 
         if ($this->categories === true) {
             $strParams = '?'.http_build_query($queryParams);
 
             return $apiCall.'categories'.$strParams;
+        }
+
+        if(!empty($this->firstName) && !empty($this->lastName))
+        {
+            $queryParams['firstName'] = $this->firstName;
+            $queryParams['lastName'] = $this->lastName;
         }
 
         // checks if random is set
