@@ -47,6 +47,7 @@ class IrkfdbClient
         if (is_string($categories)) {
             $this->limitFactsCategories = array_merge($this->limitFactsCategories, explode(',', $categories));
         }
+
         if (is_array($categories)) {
             $this->limitFactsCategories = array_merge($this->limitFactsCategories, $categories);
         }
@@ -66,6 +67,7 @@ class IrkfdbClient
         if (is_string($categories)) {
             $this->excludeFactsCategories = array_merge($this->excludeFactsCategories, explode(',', $categories));
         }
+
         if (is_array($categories)) {
             $this->excludeFactsCategories = array_merge($this->excludeFactsCategories, $categories);
         }
@@ -115,8 +117,7 @@ class IrkfdbClient
             return $apiCall.'categories'.$strParams;
         }
 
-        if(!empty($this->firstName) && !empty($this->lastName))
-        {
+        if(!empty($this->firstName) && !empty($this->lastName)) {
             $queryParams['firstName'] = $this->firstName;
             $queryParams['lastName'] = $this->lastName;
         }
@@ -148,8 +149,8 @@ class IrkfdbClient
      */
     private function makeApiCall()
     {
-        ini_set('display_errors', 1);
-        error_reporting(E_ALL);
+        ini_set('display_errors', 0);
+        error_reporting(0);
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL, $this->makeUrl());
