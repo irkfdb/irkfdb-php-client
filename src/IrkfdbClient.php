@@ -18,6 +18,7 @@ class IrkfdbClient
     private $isRandom = false;
 
     /**
+     * Sets the first name and the last name
      * @param $firstName
      * @param $lastName
      *
@@ -25,11 +26,12 @@ class IrkfdbClient
      */
     public function setName($firstName, $lastName)
     {
-        if (trim($firstName) !== '' && trim($lastName) !== '') {
+        if (!empty($firstName) && !empty($lastName)) {
             $this->firstName = $firstName;
             $this->lastName = $lastName;
         } else {
             // TODO: Name are empty - throw appropriate exception
+            throw new Exception("firstName & lastName can't be empty");
         }
 
         return $this;
@@ -138,10 +140,10 @@ class IrkfdbClient
 
         // check if queryParams exist if yes build the queryString of it
         if (count($queryParams) > 0) {
-            $strParams = '?'.http_build_query($queryParams);
+            $strParams = '?' . http_build_query($queryParams);
         }
 
-        return $apiCall.$strParams;
+        return $apiCall . $strParams;
     }
 
     /**
@@ -166,6 +168,10 @@ class IrkfdbClient
                 ]);
             }
         } catch (\Exception $e) {
+            $data = json_encode([
+                'status'        => 'FAIL',
+                'errorMessage'  => 'Api Unavailable: '.$e->getMessage(),
+            ]);
         }
 
         return json_decode($data, true);
