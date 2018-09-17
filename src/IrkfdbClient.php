@@ -18,7 +18,8 @@ class IrkfdbClient
     private $isRandom = false;
 
     /**
-     * Sets the first name and the last name
+     * Sets the first name and the last name.
+     *
      * @param $firstName
      * @param $lastName
      *
@@ -119,7 +120,7 @@ class IrkfdbClient
             return $apiCall.'categories'.$strParams;
         }
 
-        if(!empty($this->firstName) && !empty($this->lastName)) {
+        if (!empty($this->firstName) && !empty($this->lastName)) {
             $queryParams['firstName'] = $this->firstName;
             $queryParams['lastName'] = $this->lastName;
         }
@@ -140,10 +141,10 @@ class IrkfdbClient
 
         // check if queryParams exist if yes build the queryString of it
         if (count($queryParams) > 0) {
-            $strParams = '?' . http_build_query($queryParams);
+            $strParams = '?'.http_build_query($queryParams);
         }
 
-        return $apiCall . $strParams;
+        return $apiCall.$strParams;
     }
 
     /**
