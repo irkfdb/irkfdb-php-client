@@ -38,7 +38,6 @@ class IrkfdbClientTest extends TestCase
     public function testProperCategoryFact()
     {
         $response = $this->parseResponse($this->getApiClient()->fromCategories('geeky')->getRandomFact());
-
         $this->assertEquals('OK', $response['status']);
         $this->assertEquals(true, in_array('geeky', $response['data'][0]['categories']));
     }

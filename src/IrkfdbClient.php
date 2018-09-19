@@ -32,7 +32,7 @@ class IrkfdbClient
             $this->lastName = $lastName;
         } else {
             // TODO: Name are empty - throw appropriate exception
-            throw new Exception("firstName & lastName can't be empty");
+            throw new \Exception("firstName & lastName can't be empty");
         }
 
         return $this;
@@ -121,8 +121,8 @@ class IrkfdbClient
         }
 
         if (!empty($this->firstName) && !empty($this->lastName)) {
-            $queryParams['firstName'] = $this->firstName;
-            $queryParams['lastName'] = $this->lastName;
+            $queryParams['firstname'] = $this->firstName;
+            $queryParams['lastname'] = $this->lastName;
         }
 
         // checks if random is set
