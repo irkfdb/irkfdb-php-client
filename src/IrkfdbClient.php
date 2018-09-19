@@ -4,7 +4,7 @@ namespace Irkfdb;
 
 class IrkfdbClient
 {
-    const API_URL = 'http://api.irkfdb.in/facts/';
+    const API_URL = 'https://api.irkfdb.in/facts/';
     const VERSION_NUMBER = '1.0';
     const API_TYPE = 'PHP_CLIENT';
 
